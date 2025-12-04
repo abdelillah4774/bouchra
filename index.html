@@ -2,10 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>bouchra wold 💗🦆</title>
-
+<title>عالمي الوردي 💗🦆</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* =================== GLOBAL =================== */
 body {
     margin: 0;
     background: #ffeef5;
@@ -13,11 +12,11 @@ body {
     overflow-x: hidden;
     text-align: center;
     transition: 0.6s;
+    min-height: 100vh;
 }
-
 .container {
     width: 95%;
-    max-width: 480px;
+    max-width: 700px;
     background: white;
     margin: 15px auto;
     padding: 20px;
@@ -25,12 +24,32 @@ body {
     box-shadow: 0 5px 15px rgba(255,120,150,0.3);
     display: none;
 }
-
 .active { display: block; }
-
 h1, h2 { color: #ff7da8; }
-
-/* ============= HEARTS BACKGROUND ============= */
+.button {
+    display: inline-block;
+    background: #ff7da8;
+    color: white;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 14px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.button:hover { background: #ff96bf; transform: scale(1.05); }
+.card {
+    background: #fff4f9;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 12px 0;
+    box-shadow: 0 4px 12px rgba(255,120,150,0.2);
+    color: #ff7da8;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.card:hover { transform: scale(1.02); }
 .heart {
     position: fixed;
     top: -10px;
@@ -40,27 +59,10 @@ h1, h2 { color: #ff7da8; }
     opacity: 0.8;
     z-index: 0;
 }
-
 @keyframes fall {
     0% { transform: translateY(-10px); opacity: 1; }
     100% { transform: translateY(110vh); opacity: 0; }
 }
-
-/* ============= Buttons ============= */
-.button {
-    display: inline-block;
-    background: #ff7da8;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 14px;
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.button:hover { background: #ff96bf; }
-
-/* ============= Duck ============= */
 .duck {
     position: fixed;
     bottom: 10px;
@@ -70,8 +72,6 @@ h1, h2 { color: #ff7da8; }
     cursor: pointer;
     transition: 0.2s;
 }
-
-/* ======== FULLSCREEN VIDEO ======== */
 #loveVideoBox {
     position: fixed;
     top: 0; left: 0;
@@ -81,30 +81,25 @@ h1, h2 { color: #ff7da8; }
     z-index: 2000;
     animation: fadeIn 0.8s ease;
 }
-
 @keyframes fadeIn {
     from { opacity: 0; } to { opacity: 1; }
 }
-
 #loveVideo {
     width: 90%;
     max-width: 400px;
     border-radius: 15px;
     margin-top: 40px;
 }
-
 #loveText {
     color: white;
     font-size: 35px;
     margin-top: 15px;
     animation: pulse 1.5s infinite alternate;
 }
-
 @keyframes pulse {
     0% { transform: scale(1); opacity: 0.8; }
     100% { transform: scale(1.2); opacity: 1; }
 }
-
 #closeVideo {
     background: white;
     color: red;
@@ -115,21 +110,15 @@ h1, h2 { color: #ff7da8; }
 }
 </style>
 </head>
-<body onload="startDuck(); createHearts(); bgMusic.play();">
+<body onload="startDuck(); createHearts(); startBackgroundMusic();">
 
-<!-- =================== BACKGROUND HEARTS ================= -->
+<!-- Hearts -->
 <div id="heartsContainer"></div>
 
-<!-- =================== DUCK =================== -->
+<!-- Duck -->
 <img id="duck" class="duck" src="https://c.top4top.io/p_3625ghtuz1.gif">
 
-<!-- =================== BACKGROUND MUSIC =================== -->
-<audio id="bgMusic" loop>
-    <source src="https://h.top4top.io/m_3625lu4pm1.mp3" type="audio/mp3">
-    متصفحك لا يدعم تشغيل الصوت
-</audio>
-
-<!-- =================== FULLSCREEN VIDEO =================== -->
+<!-- Fullscreen Video -->
 <div id="loveVideoBox">
     <video id="loveVideo" controls src="your-video.mp4"></video>
     <div id="loveText">💗 Knabghik 💗</div>
@@ -137,11 +126,10 @@ h1, h2 { color: #ff7da8; }
     <button id="closeVideo" onclick="closeVideo()">رجوع</button>
 </div>
 
-<!-- =================== HOME =================== -->
+<!-- Home -->
 <div id="home" class="container active">
     <h1>🦆💗 salaaam lbeta dyali  💗🦆</h1>
     <p>اختاري لي بغيتي من هادو ازين</p>
-
     <a class="button" onclick="go('messages')">message men l9lb 💌</a><br>
     <a class="button" onclick="go('gallery')">design 3lik 🌸</a><br>
     <a class="button" onclick="go('poems')">kanbghekk ✨</a><br>
@@ -149,23 +137,19 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('surprise')"> surprise 🔒🦆</a>
 </div>
 
-<!-- =================== SURPRISE =================== -->
+<!-- Surprise -->
 <div id="surprise" class="container">
     <h2>🔒 surprise khas bik</h2>
     <p>dkhli l code zine ❤️</p>
-
-    <input id="codeInput" type="text" placeholder="kodi hna..." 
-           style="padding:10px;width:80%;border-radius:12px;border:2px solid #ffb3c9;">
+    <input id="codeInput" type="text" placeholder="kodi hna..." style="padding:10px;width:80%;border-radius:12px;border:2px solid #ffb3c9;">
     <br><br>
-
     <a class="button" onclick="checkCode()">دخول</a>
     <br>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
-
     <p id="codeMsg" style="color:red;margin-top:10px;"></p>
 </div>
 
-<!-- =================== SECRET =================== -->
+<!-- Secret -->
 <div id="secret" class="container">
     <h2>سرّي جداً يا بطّتي 🦆💗</h2>
     <div class="card">💗 bouchra nta liya w ana lik… hta l9lb kaytbass 👀✨</div>
@@ -173,20 +157,22 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
-<!-- =================== OTHER PAGES =================== -->
+<!-- Messages -->
 <div id="messages" class="container">
     <h2>💗kanbgheek💗</h2>
-    <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik . 3inik 7nakk dhektk ayo haja sghra wla kbira lbar7 wla flwl dyal l3am ea9l 3liha mzyaaan wakha ndwi heta n3iamaradich n9dr n3br lik ktr 3la lhob dali lik kanbghik bzaaf. 💗</div>
-    <div class="card"> rej3i o dekhli lkol w7da b trtib </div>
+    <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik ... 💗</div>
+    <div class="card">rej3i o dekhli lkol w7da b trtib</div>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
+<!-- Gallery -->
 <div id="gallery" class="container">
     <h2>design 3lik 🌸</h2>
     <img src="https://a.top4top.io/p_3625d1d341.png" style="width:100%;border-radius:15px;margin:10px auto;">
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
+<!-- Poems -->
 <div id="poems" class="container">
     <h2>kanbghekk ✨</h2>
     <div class="card">wrki 3la lbeta 💗🦆</div>
@@ -194,130 +180,99 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
+<!-- Audio (Fourth) -->
 <div id="audio" class="container">
     <h2>hedra mohima 🎶🦆</h2>
-
-    <audio id="myAudio" controls>
-        <source src="https://b.top4top.io/m_3625ywgli1.mp3" type="audio/mp3">
+    <audio id="fourthAudio" controls>
+        <source src="https://l.top4top.io/m_3625dh4ku1.mp3" type="audio/mp3">
         متصفحك لا يدعم تشغيل الصوت
     </audio>
-
-    <a class="button" onclick="document.getElementById('myAudio').play()">🔊 تشغيل الصوت</a>
+    <a class="button" onclick="playFourthAudio()">🔊 تشغيل الصوت</a>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
-<!-- =================== SCRIPT =================== -->
 <script>
-/* ======== الصفحة =================== */
-function go(id) {
-    document.querySelectorAll(".container").forEach(p => p.classList.remove("active"));
+/* ======== Pages ======== */
+function go(id){
+    document.querySelectorAll(".container").forEach(c=>c.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
-/* ======== surprise code ======== */
-function checkCode() {
+/* ======== Surprise code ======== */
+function checkCode(){
     let code = document.getElementById("codeInput").value.trim().toLowerCase();
-    if (code === "bouchra") {
-        document.body.style.background = "#ff2340"; 
+    if(code==="bouchra"){
+        document.body.style.background="#ff2340";
         showVideo();
-    } else {
-        document.getElementById("codeMsg").innerText = "❌ lcode ghalt azine… 7awli tani ❤️";
+    }else{
+        document.getElementById("codeMsg").innerText="❌ lcode ghalt azine… 7awli tani ❤️";
     }
 }
 
-/* ======== FULLSCREEN VIDEO ======== */
-function showVideo() {
-    document.getElementById("loveVideoBox").style.display = "block";
-}
+function showVideo(){ document.getElementById("loveVideoBox").style.display="block"; }
+function closeVideo(){ document.getElementById("loveVideoBox").style.display="none"; document.body.style.background="#ffeef5"; }
 
-function closeVideo() {
-    document.getElementById("loveVideoBox").style.display = "none";
-    document.body.style.background = "#ffeef5";
-}
-
-/* ======== BACKGROUND HEARTS ======== */
-function createHearts() {
-    setInterval(() => {
-        let heart = document.createElement("div");
+/* ======== Hearts ======== */
+function createHearts(){
+    setInterval(()=>{
+        let heart=document.createElement("div");
         heart.classList.add("heart");
-        heart.innerHTML = "💗";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (18 + Math.random()*15) + "px";
+        heart.innerHTML="💗";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(18+Math.random()*15)+"px";
         document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-    }, 500);
+        setTimeout(()=>heart.remove(),4000);
+    },500);
 }
 
-/* ======== DUCK MOVEMENT + VOICE ON CLICK ======== */
-let duckSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
-let duck = null;
-let duckPos = 0;
-let direction = 2;
-let jumping = false;
+/* ======== Duck ======== */
+let duckSound=new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
+let duck=null,duckPos=0,direction=2,jumping=false;
+function startDuck(){
+    duck=document.getElementById("duck");
+    setInterval(()=>{
+        duckPos+=direction;
+        if(duckPos>window.innerWidth-80||duckPos<0)direction*=-1;
+        duck.style.left=duckPos+"px";
+    },25);
 
-function startDuck() {
-    duck = document.getElementById("duck");
-    setInterval(() => {
-        duckPos += direction;
-        if (duckPos > window.innerWidth - 80 || duckPos < 0) direction *= -1;
-        duck.style.left = duckPos + "px";
-    }, 25);
-
-    duck.onclick = () => {
+    duck.onclick=()=>{
         duckSound.play();
-
-        if (!jumping) {
-            jumping = true;
-            let up = setInterval(() => {
-                let bottom = parseInt(duck.style.bottom || 10);
-                if (bottom >= 70) {
+        backgroundMusic.volume=0.2;
+        if(!jumping){
+            jumping=true;
+            let up=setInterval(()=>{
+                let bottom=parseInt(duck.style.bottom||10);
+                if(bottom>=70){
                     clearInterval(up);
-                    let down = setInterval(() => {
-                        let b = parseInt(duck.style.bottom);
-                        if (b <= 10) {
-                            duck.style.bottom = "10px";
+                    let down=setInterval(()=>{
+                        let b=parseInt(duck.style.bottom);
+                        if(b<=10){
+                            duck.style.bottom="10px";
                             clearInterval(down);
-                            jumping = false;
-                        } else {
-                            duck.style.bottom = (b - 5) + "px";
-                        }
-                    }, 20);
-                } else {
-                    duck.style.bottom = (bottom + 5) + "px";
-                }
-            }, 20);
+                            jumping=false;
+                            backgroundMusic.volume=0.6;
+                        }else duck.style.bottom=(b-5)+"px";
+                    },20);
+                }else duck.style.bottom=(bottom+5)+"px";
+            },20);
         }
     };
 }
 
-/* ======== BACKGROUND MUSIC ======== */
-let bgMusic = document.getElementById("bgMusic");
-bgMusic.volume = 1; // الصوت الطبيعي بدون خفض
+/* ======== Fourth audio ======== */
+let fourthAudio=document.getElementById("fourthAudio");
+function playFourthAudio(){
+    fourthAudio.play();
+    backgroundMusic.volume=0.2;
+    fourthAudio.onended=()=>backgroundMusic.volume=0.6;
+}
 
-/* ======== CLICK EFFECT: HEARTS ======== */
-document.body.addEventListener("click", function(e) {
-    if(!e.target.classList.contains("button")) {
-        let heart = document.createElement("div");
-        heart.innerHTML = "💗";
-        heart.style.position = "absolute";
-        heart.style.left = e.clientX - 10 + "px";
-        heart.style.top = e.clientY - 10 + "px";
-        heart.style.fontSize = "24px";
-        heart.style.pointerEvents = "none";
-        heart.style.animation = "rise 1s ease-out forwards";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 1000);
-    }
-});
+/* ======== Background Music ======== */
+let backgroundMusic=new Audio("https://h.top4top.io/m_3625lu4pm1.mp3");
+backgroundMusic.loop=true;
+function startBackgroundMusic(){ backgroundMusic.play(); }
 
-let style = document.createElement('style');
-style.innerHTML = `
-@keyframes rise {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-80px); opacity: 0; }
-}`;
-document.head.appendChild(style);
 </script>
-
 </body>
 </html>
