@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>bouchra wold💗🦆</title>
+<title>bouchra wold 💗🦆</title>
 
 <style>
 /* =================== GLOBAL =================== */
@@ -20,8 +20,8 @@ body {
     max-width: 480px;
     background: white;
     margin: 25px auto;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 25px;
+    border-radius: 25px;
     box-shadow: 0 5px 15px rgba(255,120,150,0.3);
     display: none;
 }
@@ -64,7 +64,7 @@ h1, h2 { color: #ff7da8; }
     position: fixed;
     bottom: 10px;
     left: -60px;
-    width: 50px;
+    width: 60px;
     z-index: 999;
     cursor: pointer;
     transition: 0.2s;
@@ -94,7 +94,7 @@ h1, h2 { color: #ff7da8; }
 
 #loveText {
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     margin-top: 15px;
     animation: pulse 1.5s infinite alternate;
 }
@@ -112,9 +112,51 @@ h1, h2 { color: #ff7da8; }
     margin-top: 20px;
     font-size: 18px;
 }
+
+/* ======= تحسين للجوال ======= */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .card {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .button {
+        padding: 10px 18px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #loveText {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+
+    #loveVideo {
+        width: 95%;
+    }
+
+    .duck {
+        width: 45px;
+    }
+}
 </style>
 </head>
-<body onload="startDuck(); createHearts(); playBgMusic();">
+
+<body onload="startDuck(); createHearts(); startMusic();">
 
 <!-- ================= HEARTS IN BACKGROUND ================= -->
 <div id="heartsContainer"></div>
@@ -197,17 +239,29 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
-<!-- =================== SCRIPT =================== -->
 <script>
-// ================= PAGES =================
+/* ================= DUCK MOVEMENT + VOICE ================= */
+let duckSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
+let duck = null;
+let duckPos = 0;
+let direction = 2;
+let jumping = false;
+
+/* ================= BACKGROUND MUSIC ================= */
+let bgMusic = new Audio("https://h.top4top.io/m_3625lu4pm1.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.2; // منخفض تلقائي
+function startMusic() { bgMusic.play(); }
+
 function go(id) {
     document.querySelectorAll(".container").forEach(p => p.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
-/* ======== SURPRISE CODE ======== */
+/* ======== surprise code ======== */
 function checkCode() {
     let code = document.getElementById("codeInput").value.trim().toLowerCase();
+
     if (code === "bouchra") {
         document.body.style.background = "#ff2340";
         showVideo();
@@ -219,11 +273,12 @@ function checkCode() {
 /* ======== FULL VIDEO ======== */
 function showVideo() {
     document.getElementById("loveVideoBox").style.display = "block";
+    bgMusic.volume = 0.1; // خفض الموسيقى عند فتح الفيديو
 }
-
 function closeVideo() {
     document.getElementById("loveVideoBox").style.display = "none";
     document.body.style.background = "#ffeef5";
+    bgMusic.volume = 0.2; // إعادة الصوت الخلفي
 }
 
 /* ======== HEARTS CREATOR (BACKGROUND) ======== */
@@ -239,73 +294,31 @@ function createHearts() {
     }, 500);
 }
 
-/* ======== CLICK HEARTS (ON BUTTON CLICK) ======== */
-function showClickHearts(x, y) {
-    let heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💗";
-    heart.style.position = "fixed";
-    heart.style.left = (x - 10) + "px";
-    heart.style.top = (y - 10) + "px";
-    heart.style.fontSize = (20 + Math.random()*10) + "px";
+/* ======== HEARTS ON CLICK ======== */
+document.body.addEventListener('click', function(e){
+    let heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.position = 'fixed';
+    heart.style.left = e.clientX - 10 + 'px';
+    heart.style.top = e.clientY - 10 + 'px';
+    heart.style.fontSize = (20 + Math.random()*15) + 'px';
     heart.style.zIndex = 1000;
-    heart.style.opacity = 1;
-    heart.style.transition = "all 1s ease-out";
+    heart.innerText = '💗';
     document.body.appendChild(heart);
-    setTimeout(() => {
-        heart.style.top = (y - 60 - Math.random()*20) + "px";
-        heart.style.opacity = 0;
-    }, 10);
-    setTimeout(() => heart.remove(), 1100);
-}
-
-/* ======== BACKGROUND MUSIC ======== */
-let bgMusic = new Audio("https://h.top4top.io/m_3625lu4pm1.mp3");
-bgMusic.loop = true;
-bgMusic.volume = 0.3;
-function playBgMusic() {
-    bgMusic.play().catch(()=>{});
-}
-
-/* ======== CLICK SOUND ======== */
-let clickSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
-function playSoundWithBgFade(sound) {
-    let originalVolume = bgMusic.volume;
-    bgMusic.volume = 0.05;
-    sound.play();
-    sound.onended = () => { bgMusic.volume = originalVolume; };
-}
-
-/* ======== ADD CLICK HEARTS & SOUND TO BUTTONS ======== */
-document.querySelectorAll(".button").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        let x = e.clientX;
-        let y = e.clientY;
-        showClickHearts(x, y);
-        clickSound.currentTime = 0;
-        playSoundWithBgFade(clickSound);
-    });
+    setTimeout(()=>heart.remove(), 1500);
 });
 
-/* ================= DUCK MOVEMENT + VOICE ================= */
-let mySound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
-let duck = null;
-let duckPos = 0;
-let direction = 2;
-let jumping = false;
-
+/* ======== DUCK MOVEMENT ======== */
 function startDuck() {
     duck = document.getElementById("duck");
-
     setInterval(() => {
         duckPos += direction;
-        if (duckPos > window.innerWidth - 60 || duckPos < 0) direction *= -1;
+        if (duckPos > window.innerWidth - 80 || duckPos < 0) direction *= -1;
         duck.style.left = duckPos + "px";
     }, 25);
 
     duck.onclick = () => {
-        playSoundWithBgFade(mySound);
-
+        duckSound.play();
         if (!jumping) {
             jumping = true;
             let up = setInterval(() => {
@@ -318,9 +331,13 @@ function startDuck() {
                             duck.style.bottom = "10px";
                             clearInterval(down);
                             jumping = false;
-                        } else { duck.style.bottom = (b - 5) + "px"; }
+                        } else {
+                            duck.style.bottom = (b - 5) + "px";
+                        }
                     }, 20);
-                } else { duck.style.bottom = (bottom + 5) + "px"; }
+                } else {
+                    duck.style.bottom = (bottom + 5) + "px";
+                }
             }, 20);
         }
     };
