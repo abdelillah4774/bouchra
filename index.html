@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>عالمي الوردي 💗🦆</title>
+
+<style>
+/* =================== GLOBAL =================== */
+body {
+    margin: 0;
+    background: #ffeef5;
+    font-family: "Tajawal", sans-serif;
+    overflow-x: hidden;
+    text-align: center;
+    transition: 0.6s;
+}
+
+.container {
+    width: 90%;
+    max-width: 480px;
+    background: white;
+    margin: 25px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(255,120,150,0.3);
+    display: none;
+}
+
+.active { display: block; }
+
+h1, h2 { color: #ff7da8; }
+
+/* ============= HEARTS BACKGROUND ============= */
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 22px;
+    color: #ff7da8;
+    animation: fall 4s linear infinite;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* ============= Buttons ============= */
+.button {
+    display: inline-block;
+    background: #ff7da8;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 14px;
+    margin-top: 15px;
+}
+
+.button:hover { background: #ff96bf; }
+
+/* ============= Duck ============= */
+.duck {
+    position: fixed;
+    bottom: 10px;
+    left: -60px;
+    width: 60px;
+    z-index: 999;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* ======== FULLSCREEN VIDEO ======== */
+#loveVideoBox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,0,0,0.8);
+    display: none;
+    z-index: 2000;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+}
+
+#loveVideo {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+#loveText {
+    color: white;
+    font-size: 35px;
+    margin-top: 15px;
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+#closeVideo {
+    background: white;
+    color: red;
+    padding: 12px 22px;
+    border-radius: 14px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+</style>
+</head>
+<body onload="startDuck(); createHearts();">
+
+<!-- ================= HEARTS IN BACKGROUND ================= -->
+<div id="heartsContainer"></div>
+
+<!-- =================== DUCK =================== -->
+<img id="duck" class="duck" src="https://c.top4top.io/p_3625ghtuz1.gif">
+
+<!-- =================== FULLSCREEN VIDEO =================== -->
+<div id="loveVideoBox">
+    <video id="loveVideo" controls src="your-video.mp4"></video>
+    <div id="loveText">💗 Knabghik 💗</div>
+    <br>
+    <button id="closeVideo" onclick="closeVideo()">رجوع</button>
+</div>
+
+<!-- =================== HOME =================== -->
+<div id="home" class="container active">
+    <h1>🦆💗 salaaam lbeta dyali  💗🦆</h1>
+    <p>اختاري لي بغيتي من هادو ازين</p>
+
+    <a class="button" onclick="go('messages')">message men l9lb 💌</a><br>
+    <a class="button" onclick="go('gallery')">design 3lik 🌸</a><br>
+    <a class="button" onclick="go('poems')">kanbghekk ✨</a><br>
+    <a class="button" onclick="go('audio')">hedra mohima</a><br>
+    <a class="button" onclick="go('surprise')"> surprise 🔒🦆</a>
+</div>
+
+<!-- =================== SURPRISE =================== -->
+<div id="surprise" class="container">
+    <h2>🔒 surprise khas bik</h2>
+    <p>dkhli l code zine ❤️</p>
+
+    <input id="codeInput" type="text" placeholder="kodi hna..." 
+           style="padding:10px;width:80%;border-radius:12px;border:2px solid #ffb3c9;">
+    <br><br>
+
+    <a class="button" onclick="checkCode()">دخول</a>
+    <br>
+    <a class="button" onclick="go('home')">🔙 رجوع</a>
+
+    <p id="codeMsg" style="color:red;margin-top:10px;"></p>
+</div>
+
+<!-- =================== SECRET =================== -->
+<div id="secret" class="container">
+    <h2>سرّي جداً يا بطّتي 🦆💗</h2>
+    <div class="card">💗 bouchra nta liya w ana lik… hta l9lb kaytbass 👀✨</div>
+    <div class="card">❤️ nta l7lwa dyali w nta l9lb dyali w nta kolchi</div>
+    <a class="button" onclick="go('home')">🔙 رجوع</a>
+</div>
+
+<!-- ============== OTHER PAGES ============== -->
+<div id="messages" class="container">
+    <h2>💗kanbgheek💗</h2>
+    <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik . 3inik 7nakk dhektk ayo haja sghra wla kbira lbar7 wla flwl dyal l3am ea9l 3liha mzyaaan wakha ndwi heta n3iamaradich n9dr n3br lik ktr 3la lhob dali lik kanbghik bzaaf. 💗</div>
+  
+    <div class="card"> rej3i o dekhli lkol w7da b trtib </div>
+    <a class="button" onclick="go('home')">🔙 رجوع</a>
+</div>
+
+<div id="gallery" class="container">
+    <h2>design 3lik 🌸</h2>
+    <img src="https://a.top4top.io/p_3625d1d341.png" style="width:100%;border-radius:15px;margin:10px auto;">
+    <a class="button" onclick="go('home')">🔙 رجوع</a>
+</div>
+
+<div id="poems" class="container">
+    <h2>kanbghekk ✨</h2>
+    <div class="card">wrki 3la lbeta 💗🦆</div>
+    <div class="card">sifti liya oudio fih dakchi li galt hhh {twa7chtha}🌸✨</div>
+    <a class="button" onclick="go('home')">🔙 رجوع</a>
+</div>
+
+<div id="audio" class="container">
+    <h2>hedra mohima 🎶🦆</h2>
+
+    <!-- الصوت -->
+    <audio id="myAudio" controls>
+        <source src="https://b.top4top.io/m_3625ywgli1.mp3" type="audio/mp3">
+        متصفحك لا يدعم تشغيل الصوت
+    </audio>
+
+    <a class="button" onclick="document.getElementById('myAudio').play()">🔊 تشغيل الصوت</a>
+    <a class="button" onclick="go('home')">🔙 رجوع</a>
+</div>
+  
+<!-- =================== SCRIPT =================== -->
+<script>
+// تغيير الصفحات
+function go(id) {
+    document.querySelectorAll(".container").forEach(p => p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+/* ======== surprise code ======== */
+function checkCode() {
+    let code = document.getElementById("codeInput").value.trim().toLowerCase();
+
+    if (code === "bouchra") {
+        document.body.style.background = "#ff2340"; // أحمر كامل
+        showVideo();
+    } else {
+        document.getElementById("codeMsg").innerText = "❌ lcode ghalt azine… 7awli tani ❤️";
+    }
+}
+
+/* ======== FULL VIDEO ======== */
+function showVideo() {
+    document.getElementById("loveVideoBox").style.display = "block";
+}
+
+function closeVideo() {
+    document.getElementById("loveVideoBox").style.display = "none";
+    document.body.style.background = "#ffeef5";
+}
+
+/* ======== HEARTS CREATOR ======== */
+function createHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random()*15) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }, 500);
+}
+
+/* ================= DUCK MOVEMENT + VOICE ================= */
+let mySound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
+let duck = null;
+let duckPos = 0;
+let direction = 2;
+let jumping = false;
+
+function startDuck() {
+    duck = document.getElementById("duck");
+
+    setInterval(() => {
+        duckPos += direction;
+        if (duckPos > window.innerWidth - 80 || duckPos < 0) direction *= -1;
+        duck.style.left = duckPos + "px";
+    }, 25);
+
+    duck.onclick = () => {
+        mySound.play();
+
+        if (!jumping) {
+            jumping = true;
+
+            let up = setInterval(() => {
+                let bottom = parseInt(duck.style.bottom || 10);
+
+                if (bottom >= 70) {
+                    clearInterval(up);
+
+                    let down = setInterval(() => {
+                        let b = parseInt(duck.style.bottom);
+
+                        if (b <= 10) {
+                            duck.style.bottom = "10px";
+                            clearInterval(down);
+                            jumping = false;
+                        } else {
+                            duck.style.bottom = (b - 5) + "px";
+                        }
+                    }, 20);
+                } else {
+                    duck.style.bottom = (bottom + 5) + "px";
+                }
+            }, 20);
+        }
+    };
+}
+</script>
+
+</body>
+</html>
