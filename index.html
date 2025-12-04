@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>bouchra wold💗🦆</title>
+<title>bouchra wold 💗🦆</title>
 
 <style>
 /* =================== GLOBAL =================== */
@@ -16,10 +16,10 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     max-width: 480px;
     background: white;
-    margin: 25px auto;
+    margin: 15px auto;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(255,120,150,0.3);
@@ -52,9 +52,10 @@ h1, h2 { color: #ff7da8; }
     background: #ff7da8;
     color: white;
     text-decoration: none;
-    padding: 12px 22px;
+    padding: 10px 20px;
     border-radius: 14px;
-    margin-top: 15px;
+    margin: 10px 0;
+    font-size: 16px;
 }
 
 .button:hover { background: #ff96bf; }
@@ -64,7 +65,7 @@ h1, h2 { color: #ff7da8; }
     position: fixed;
     bottom: 10px;
     left: -60px;
-    width: 50px;
+    width: 60px;
     z-index: 999;
     cursor: pointer;
     transition: 0.2s;
@@ -94,7 +95,7 @@ h1, h2 { color: #ff7da8; }
 
 #loveText {
     color: white;
-    font-size: 30px;
+    font-size: 35px;
     margin-top: 15px;
     animation: pulse 1.5s infinite alternate;
 }
@@ -114,13 +115,19 @@ h1, h2 { color: #ff7da8; }
 }
 </style>
 </head>
-<body onload="startDuck(); createHearts(); playBgMusic();">
+<body onload="startDuck(); createHearts(); bgMusic.play();">
 
-<!-- ================= HEARTS IN BACKGROUND ================= -->
+<!-- =================== BACKGROUND HEARTS ================= -->
 <div id="heartsContainer"></div>
 
 <!-- =================== DUCK =================== -->
 <img id="duck" class="duck" src="https://c.top4top.io/p_3625ghtuz1.gif">
+
+<!-- =================== BACKGROUND MUSIC =================== -->
+<audio id="bgMusic" loop>
+    <source src="https://h.top4top.io/m_3625lu4pm1.mp3" type="audio/mp3">
+    متصفحك لا يدعم تشغيل الصوت
+</audio>
 
 <!-- =================== FULLSCREEN VIDEO =================== -->
 <div id="loveVideoBox">
@@ -166,11 +173,11 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
-<!-- ============== OTHER PAGES ============== -->
+<!-- =================== OTHER PAGES =================== -->
 <div id="messages" class="container">
     <h2>💗kanbgheek💗</h2>
     <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik . 3inik 7nakk dhektk ayo haja sghra wla kbira lbar7 wla flwl dyal l3am ea9l 3liha mzyaaan wakha ndwi heta n3iamaradich n9dr n3br lik ktr 3la lhob dali lik kanbghik bzaaf. 💗</div>
-    <div class="card">rej3i o dekhli lkol w7da b trtib</div>
+    <div class="card"> rej3i o dekhli lkol w7da b trtib </div>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
@@ -189,34 +196,36 @@ h1, h2 { color: #ff7da8; }
 
 <div id="audio" class="container">
     <h2>hedra mohima 🎶🦆</h2>
+
     <audio id="myAudio" controls>
         <source src="https://b.top4top.io/m_3625ywgli1.mp3" type="audio/mp3">
         متصفحك لا يدعم تشغيل الصوت
     </audio>
+
     <a class="button" onclick="document.getElementById('myAudio').play()">🔊 تشغيل الصوت</a>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
 <!-- =================== SCRIPT =================== -->
 <script>
-// ================= PAGES =================
+/* ======== الصفحة =================== */
 function go(id) {
     document.querySelectorAll(".container").forEach(p => p.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
-/* ======== SURPRISE CODE ======== */
+/* ======== surprise code ======== */
 function checkCode() {
     let code = document.getElementById("codeInput").value.trim().toLowerCase();
     if (code === "bouchra") {
-        document.body.style.background = "#ff2340";
+        document.body.style.background = "#ff2340"; 
         showVideo();
     } else {
         document.getElementById("codeMsg").innerText = "❌ lcode ghalt azine… 7awli tani ❤️";
     }
 }
 
-/* ======== FULL VIDEO ======== */
+/* ======== FULLSCREEN VIDEO ======== */
 function showVideo() {
     document.getElementById("loveVideoBox").style.display = "block";
 }
@@ -226,7 +235,7 @@ function closeVideo() {
     document.body.style.background = "#ffeef5";
 }
 
-/* ======== HEARTS CREATOR (BACKGROUND) ======== */
+/* ======== BACKGROUND HEARTS ======== */
 function createHearts() {
     setInterval(() => {
         let heart = document.createElement("div");
@@ -239,56 +248,8 @@ function createHearts() {
     }, 500);
 }
 
-/* ======== CLICK HEARTS (ON BUTTON CLICK) ======== */
-function showClickHearts(x, y) {
-    let heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💗";
-    heart.style.position = "fixed";
-    heart.style.left = (x - 10) + "px";
-    heart.style.top = (y - 10) + "px";
-    heart.style.fontSize = (20 + Math.random()*10) + "px";
-    heart.style.zIndex = 1000;
-    heart.style.opacity = 1;
-    heart.style.transition = "all 1s ease-out";
-    document.body.appendChild(heart);
-    setTimeout(() => {
-        heart.style.top = (y - 60 - Math.random()*20) + "px";
-        heart.style.opacity = 0;
-    }, 10);
-    setTimeout(() => heart.remove(), 1100);
-}
-
-/* ======== BACKGROUND MUSIC ======== */
-let bgMusic = new Audio("https://h.top4top.io/m_3625lu4pm1.mp3");
-bgMusic.loop = true;
-bgMusic.volume = 0.3;
-function playBgMusic() {
-    bgMusic.play().catch(()=>{});
-}
-
-/* ======== CLICK SOUND ======== */
-let clickSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
-function playSoundWithBgFade(sound) {
-    let originalVolume = bgMusic.volume;
-    bgMusic.volume = 0.05;
-    sound.play();
-    sound.onended = () => { bgMusic.volume = originalVolume; };
-}
-
-/* ======== ADD CLICK HEARTS & SOUND TO BUTTONS ======== */
-document.querySelectorAll(".button").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        let x = e.clientX;
-        let y = e.clientY;
-        showClickHearts(x, y);
-        clickSound.currentTime = 0;
-        playSoundWithBgFade(clickSound);
-    });
-});
-
-/* ================= DUCK MOVEMENT + VOICE ================= */
-let mySound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
+/* ======== DUCK MOVEMENT + VOICE ON CLICK ======== */
+let duckSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
 let duck = null;
 let duckPos = 0;
 let direction = 2;
@@ -296,15 +257,14 @@ let jumping = false;
 
 function startDuck() {
     duck = document.getElementById("duck");
-
     setInterval(() => {
         duckPos += direction;
-        if (duckPos > window.innerWidth - 60 || duckPos < 0) direction *= -1;
+        if (duckPos > window.innerWidth - 80 || duckPos < 0) direction *= -1;
         duck.style.left = duckPos + "px";
     }, 25);
 
     duck.onclick = () => {
-        playSoundWithBgFade(mySound);
+        duckSound.play();
 
         if (!jumping) {
             jumping = true;
@@ -318,13 +278,45 @@ function startDuck() {
                             duck.style.bottom = "10px";
                             clearInterval(down);
                             jumping = false;
-                        } else { duck.style.bottom = (b - 5) + "px"; }
+                        } else {
+                            duck.style.bottom = (b - 5) + "px";
+                        }
                     }, 20);
-                } else { duck.style.bottom = (bottom + 5) + "px"; }
+                } else {
+                    duck.style.bottom = (bottom + 5) + "px";
+                }
             }, 20);
         }
     };
 }
+
+/* ======== BACKGROUND MUSIC ======== */
+let bgMusic = document.getElementById("bgMusic");
+bgMusic.volume = 1; // الصوت الطبيعي بدون خفض
+
+/* ======== CLICK EFFECT: HEARTS ======== */
+document.body.addEventListener("click", function(e) {
+    if(!e.target.classList.contains("button")) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💗";
+        heart.style.position = "absolute";
+        heart.style.left = e.clientX - 10 + "px";
+        heart.style.top = e.clientY - 10 + "px";
+        heart.style.fontSize = "24px";
+        heart.style.pointerEvents = "none";
+        heart.style.animation = "rise 1s ease-out forwards";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+    }
+});
+
+let style = document.createElement('style');
+style.innerHTML = `
+@keyframes rise {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-80px); opacity: 0; }
+}`;
+document.head.appendChild(style);
 </script>
 
 </body>
