@@ -20,8 +20,8 @@ body {
     max-width: 480px;
     background: white;
     margin: 25px auto;
-    padding: 25px;
-    border-radius: 25px;
+    padding: 20px;
+    border-radius: 20px;
     box-shadow: 0 5px 15px rgba(255,120,150,0.3);
     display: none;
 }
@@ -64,7 +64,7 @@ h1, h2 { color: #ff7da8; }
     position: fixed;
     bottom: 10px;
     left: -60px;
-    width: 60px;
+    width: 50px;
     z-index: 999;
     cursor: pointer;
     transition: 0.2s;
@@ -94,7 +94,7 @@ h1, h2 { color: #ff7da8; }
 
 #loveText {
     color: white;
-    font-size: 35px;
+    font-size: 30px;
     margin-top: 15px;
     animation: pulse 1.5s infinite alternate;
 }
@@ -114,7 +114,7 @@ h1, h2 { color: #ff7da8; }
 }
 </style>
 </head>
-<body onload="startDuck(); createHearts();">
+<body onload="startDuck(); createHearts(); playBgMusic();">
 
 <!-- ================= HEARTS IN BACKGROUND ================= -->
 <div id="heartsContainer"></div>
@@ -170,8 +170,7 @@ h1, h2 { color: #ff7da8; }
 <div id="messages" class="container">
     <h2>💗kanbgheek💗</h2>
     <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik . 3inik 7nakk dhektk ayo haja sghra wla kbira lbar7 wla flwl dyal l3am ea9l 3liha mzyaaan wakha ndwi heta n3iamaradich n9dr n3br lik ktr 3la lhob dali lik kanbghik bzaaf. 💗</div>
-  
-    <div class="card"> rej3i o dekhli lkol w7da b trtib </div>
+    <div class="card">rej3i o dekhli lkol w7da b trtib</div>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
@@ -190,31 +189,27 @@ h1, h2 { color: #ff7da8; }
 
 <div id="audio" class="container">
     <h2>hedra mohima 🎶🦆</h2>
-
-    <!-- الصوت -->
     <audio id="myAudio" controls>
         <source src="https://b.top4top.io/m_3625ywgli1.mp3" type="audio/mp3">
         متصفحك لا يدعم تشغيل الصوت
     </audio>
-
     <a class="button" onclick="document.getElementById('myAudio').play()">🔊 تشغيل الصوت</a>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
-  
+
 <!-- =================== SCRIPT =================== -->
 <script>
-// تغيير الصفحات
+// ================= PAGES =================
 function go(id) {
     document.querySelectorAll(".container").forEach(p => p.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
-/* ======== surprise code ======== */
+/* ======== SURPRISE CODE ======== */
 function checkCode() {
     let code = document.getElementById("codeInput").value.trim().toLowerCase();
-
     if (code === "bouchra") {
-        document.body.style.background = "#ff2340"; // أحمر كامل
+        document.body.style.background = "#ff2340";
         showVideo();
     } else {
         document.getElementById("codeMsg").innerText = "❌ lcode ghalt azine… 7awli tani ❤️";
@@ -231,7 +226,7 @@ function closeVideo() {
     document.body.style.background = "#ffeef5";
 }
 
-/* ======== HEARTS CREATOR ======== */
+/* ======== HEARTS CREATOR (BACKGROUND) ======== */
 function createHearts() {
     setInterval(() => {
         let heart = document.createElement("div");
@@ -243,6 +238,54 @@ function createHearts() {
         setTimeout(() => heart.remove(), 4000);
     }, 500);
 }
+
+/* ======== CLICK HEARTS (ON BUTTON CLICK) ======== */
+function showClickHearts(x, y) {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.position = "fixed";
+    heart.style.left = (x - 10) + "px";
+    heart.style.top = (y - 10) + "px";
+    heart.style.fontSize = (20 + Math.random()*10) + "px";
+    heart.style.zIndex = 1000;
+    heart.style.opacity = 1;
+    heart.style.transition = "all 1s ease-out";
+    document.body.appendChild(heart);
+    setTimeout(() => {
+        heart.style.top = (y - 60 - Math.random()*20) + "px";
+        heart.style.opacity = 0;
+    }, 10);
+    setTimeout(() => heart.remove(), 1100);
+}
+
+/* ======== BACKGROUND MUSIC ======== */
+let bgMusic = new Audio("https://h.top4top.io/m_3625lu4pm1.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
+function playBgMusic() {
+    bgMusic.play().catch(()=>{});
+}
+
+/* ======== CLICK SOUND ======== */
+let clickSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
+function playSoundWithBgFade(sound) {
+    let originalVolume = bgMusic.volume;
+    bgMusic.volume = 0.05;
+    sound.play();
+    sound.onended = () => { bgMusic.volume = originalVolume; };
+}
+
+/* ======== ADD CLICK HEARTS & SOUND TO BUTTONS ======== */
+document.querySelectorAll(".button").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        let x = e.clientX;
+        let y = e.clientY;
+        showClickHearts(x, y);
+        clickSound.currentTime = 0;
+        playSoundWithBgFade(clickSound);
+    });
+});
 
 /* ================= DUCK MOVEMENT + VOICE ================= */
 let mySound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
@@ -256,36 +299,28 @@ function startDuck() {
 
     setInterval(() => {
         duckPos += direction;
-        if (duckPos > window.innerWidth - 80 || duckPos < 0) direction *= -1;
+        if (duckPos > window.innerWidth - 60 || duckPos < 0) direction *= -1;
         duck.style.left = duckPos + "px";
     }, 25);
 
     duck.onclick = () => {
-        mySound.play();
+        playSoundWithBgFade(mySound);
 
         if (!jumping) {
             jumping = true;
-
             let up = setInterval(() => {
                 let bottom = parseInt(duck.style.bottom || 10);
-
                 if (bottom >= 70) {
                     clearInterval(up);
-
                     let down = setInterval(() => {
                         let b = parseInt(duck.style.bottom);
-
                         if (b <= 10) {
                             duck.style.bottom = "10px";
                             clearInterval(down);
                             jumping = false;
-                        } else {
-                            duck.style.bottom = (b - 5) + "px";
-                        }
+                        } else { duck.style.bottom = (b - 5) + "px"; }
                     }, 20);
-                } else {
-                    duck.style.bottom = (bottom + 5) + "px";
-                }
+                } else { duck.style.bottom = (bottom + 5) + "px"; }
             }, 20);
         }
     };
