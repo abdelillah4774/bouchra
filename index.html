@@ -2,8 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>bouchra wold 💗🦆</title>
-
+<title>عالمي الوردي 💗🦆</title>
 <style>
 /* =================== GLOBAL =================== */
 body {
@@ -13,11 +12,13 @@ body {
     overflow-x: hidden;
     text-align: center;
     transition: 0.6s;
+    position: relative;
 }
 
+/* ======= CONTAINERS ======= */
 .container {
     width: 95%;
-    max-width: 480px;
+    max-width: 500px;
     background: white;
     margin: 15px auto;
     padding: 20px;
@@ -28,7 +29,7 @@ body {
 
 .active { display: block; }
 
-h1, h2 { color: #ff7da8; }
+h1,h2 { color: #ff7da8; }
 
 /* ============= HEARTS BACKGROUND ============= */
 .heart {
@@ -46,21 +47,21 @@ h1, h2 { color: #ff7da8; }
     100% { transform: translateY(110vh); opacity: 0; }
 }
 
-/* ============= Buttons ============= */
+/* ============= BUTTONS ============= */
 .button {
     display: inline-block;
     background: #ff7da8;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 22px;
     border-radius: 14px;
-    margin: 10px 0;
+    margin-top: 15px;
     font-size: 16px;
 }
 
 .button:hover { background: #ff96bf; }
 
-/* ============= Duck ============= */
+/* ============= DUCK ============= */
 .duck {
     position: fixed;
     bottom: 10px;
@@ -74,7 +75,7 @@ h1, h2 { color: #ff7da8; }
 /* ======== FULLSCREEN VIDEO ======== */
 #loveVideoBox {
     position: fixed;
-    top: 0; left: 0;
+    top:0; left:0;
     width: 100%; height: 100%;
     background: rgba(255,0,0,0.8);
     display: none;
@@ -82,9 +83,7 @@ h1, h2 { color: #ff7da8; }
     animation: fadeIn 0.8s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-}
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 
 #loveVideo {
     width: 90%;
@@ -95,39 +94,28 @@ h1, h2 { color: #ff7da8; }
 
 #loveText {
     color: white;
-    font-size: 35px;
+    font-size: 30px;
     margin-top: 15px;
     animation: pulse 1.5s infinite alternate;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 1; }
+    0% { transform: scale(1); opacity:0.8; }
+    100% { transform: scale(1.2); opacity:1; }
 }
 
 #closeVideo {
-    background: white;
-    color: red;
-    padding: 12px 22px;
-    border-radius: 14px;
-    margin-top: 20px;
-    font-size: 18px;
+    background:white; color:red; padding:12px 22px; border-radius:14px; margin-top:20px; font-size:16px;
 }
 </style>
 </head>
-<body onload="startDuck(); createHearts(); bgMusic.play();">
+<body onload="startDuck(); createHearts();">
 
-<!-- =================== BACKGROUND HEARTS ================= -->
+<!-- ================= HEARTS BACKGROUND ================= -->
 <div id="heartsContainer"></div>
 
 <!-- =================== DUCK =================== -->
 <img id="duck" class="duck" src="https://c.top4top.io/p_3625ghtuz1.gif">
-
-<!-- =================== BACKGROUND MUSIC =================== -->
-<audio id="bgMusic" loop>
-    <source src="https://h.top4top.io/m_3625lu4pm1.mp3" type="audio/mp3">
-    متصفحك لا يدعم تشغيل الصوت
-</audio>
 
 <!-- =================== FULLSCREEN VIDEO =================== -->
 <div id="loveVideoBox">
@@ -146,7 +134,8 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('gallery')">design 3lik 🌸</a><br>
     <a class="button" onclick="go('poems')">kanbghekk ✨</a><br>
     <a class="button" onclick="go('audio')">hedra mohima</a><br>
-    <a class="button" onclick="go('surprise')"> surprise 🔒🦆</a>
+    <a class="button" onclick="go('surprise')"> surprise 🔒🦆</a><br>
+    <a class="button" onclick="startBgMusic()">▶️ تشغيل الموسيقى 🎶</a>
 </div>
 
 <!-- =================== SURPRISE =================== -->
@@ -173,11 +162,11 @@ h1, h2 { color: #ff7da8; }
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
-<!-- =================== OTHER PAGES =================== -->
+<!-- ============== OTHER PAGES ============== -->
 <div id="messages" class="container">
     <h2>💗kanbgheek💗</h2>
-    <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik . 3inik 7nakk dhektk ayo haja sghra wla kbira lbar7 wla flwl dyal l3am ea9l 3liha mzyaaan wakha ndwi heta n3iamaradich n9dr n3br lik ktr 3la lhob dali lik kanbghik bzaaf. 💗</div>
-    <div class="card"> rej3i o dekhli lkol w7da b trtib </div>
+    <div class="card">men nhar lewl li chftk fih ma9ndr nsa heta tfsila w7da fik ... 💗</div>
+    <div class="card">rej3i o dekhli lkol w7da b trtib</div>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
@@ -196,128 +185,113 @@ h1, h2 { color: #ff7da8; }
 
 <div id="audio" class="container">
     <h2>hedra mohima 🎶🦆</h2>
-
     <audio id="myAudio" controls>
         <source src="https://b.top4top.io/m_3625ywgli1.mp3" type="audio/mp3">
         متصفحك لا يدعم تشغيل الصوت
     </audio>
-
-    <a class="button" onclick="document.getElementById('myAudio').play()">🔊 تشغيل الصوت</a>
+    <a class="button" onclick="playAudio()">🔊 تشغيل الصوت</a>
     <a class="button" onclick="go('home')">🔙 رجوع</a>
 </div>
 
 <!-- =================== SCRIPT =================== -->
 <script>
-/* ======== الصفحة =================== */
+// صفحات
 function go(id) {
-    document.querySelectorAll(".container").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".container").forEach(p=>p.classList.remove("active"));
     document.getElementById(id).classList.add("active");
 }
 
-/* ======== surprise code ======== */
+// surprise code
 function checkCode() {
     let code = document.getElementById("codeInput").value.trim().toLowerCase();
-    if (code === "bouchra") {
-        document.body.style.background = "#ff2340"; 
+    if(code === "bouchra") {
+        document.body.style.background = "#ff2340";
         showVideo();
     } else {
-        document.getElementById("codeMsg").innerText = "❌ lcode ghalt azine… 7awli tani ❤️";
+        document.getElementById("codeMsg").innerText="❌ lcode ghalt azine… 7awli tani ❤️";
     }
 }
 
-/* ======== FULLSCREEN VIDEO ======== */
-function showVideo() {
-    document.getElementById("loveVideoBox").style.display = "block";
-}
+// FULL VIDEO
+function showVideo() { document.getElementById("loveVideoBox").style.display="block"; }
+function closeVideo() { document.getElementById("loveVideoBox").style.display="none"; document.body.style.background="#ffeef5"; }
 
-function closeVideo() {
-    document.getElementById("loveVideoBox").style.display = "none";
-    document.body.style.background = "#ffeef5";
-}
-
-/* ======== BACKGROUND HEARTS ======== */
+// HEARTS
 function createHearts() {
-    setInterval(() => {
-        let heart = document.createElement("div");
+    setInterval(()=> {
+        let heart=document.createElement("div");
         heart.classList.add("heart");
-        heart.innerHTML = "💗";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (18 + Math.random()*15) + "px";
+        heart.innerHTML="💗";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(18+Math.random()*15)+"px";
         document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-    }, 500);
+        setTimeout(()=>heart.remove(),4000);
+    },500);
 }
 
-/* ======== DUCK MOVEMENT + VOICE ON CLICK ======== */
-let duckSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
-let duck = null;
+// MOUSE CLICKS HEARTS
+document.addEventListener('click',function(e){
+    let c=document.createElement('div');
+    c.className='heart';
+    c.innerHTML='💗';
+    c.style.position='absolute';
+    c.style.left=e.pageX+'px';
+    c.style.top=e.pageY+'px';
+    c.style.fontSize='20px';
+    c.style.zIndex='1000';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),1500);
+});
+
+// DUCK
+let duck = document.getElementById("duck");
 let duckPos = 0;
 let direction = 2;
-let jumping = false;
+let jumping=false;
+let duckSound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
 
-function startDuck() {
-    duck = document.getElementById("duck");
-    setInterval(() => {
+function startDuck(){
+    setInterval(()=>{
         duckPos += direction;
-        if (duckPos > window.innerWidth - 80 || duckPos < 0) direction *= -1;
-        duck.style.left = duckPos + "px";
-    }, 25);
+        if(duckPos>window.innerWidth-80||duckPos<0) direction*=-1;
+        duck.style.left = duckPos+"px";
+    },25);
 
-    duck.onclick = () => {
+    duck.onclick=()=>{
+        if(bgMusic) bgMusic.volume=0.3; // تخفيض الموسيقى
         duckSound.play();
+        duckSound.onended=()=>{ if(bgMusic) bgMusic.volume=1; };
 
-        if (!jumping) {
-            jumping = true;
-            let up = setInterval(() => {
-                let bottom = parseInt(duck.style.bottom || 10);
-                if (bottom >= 70) {
+        if(!jumping){
+            jumping=true;
+            let up=setInterval(()=>{
+                let bottom=parseInt(duck.style.bottom||10);
+                if(bottom>=70){
                     clearInterval(up);
-                    let down = setInterval(() => {
-                        let b = parseInt(duck.style.bottom);
-                        if (b <= 10) {
-                            duck.style.bottom = "10px";
-                            clearInterval(down);
-                            jumping = false;
-                        } else {
-                            duck.style.bottom = (b - 5) + "px";
-                        }
-                    }, 20);
-                } else {
-                    duck.style.bottom = (bottom + 5) + "px";
-                }
-            }, 20);
+                    let down=setInterval(()=>{
+                        let b=parseInt(duck.style.bottom);
+                        if(b<=10){ duck.style.bottom="10px"; clearInterval(down); jumping=false; }
+                        else duck.style.bottom=(b-5)+"px";
+                    },20);
+                }else duck.style.bottom=(bottom+5)+"px";
+            },20);
         }
     };
 }
 
-/* ======== BACKGROUND MUSIC ======== */
-let bgMusic = document.getElementById("bgMusic");
-bgMusic.volume = 1; // الصوت الطبيعي بدون خفض
+// BACKGROUND MUSIC
+let bgMusic = new Audio("https://h.top4top.io/m_3625lu4pm1.mp3");
+bgMusic.loop=true;
+bgMusic.volume=1;
+function startBgMusic(){ bgMusic.play().catch(()=>{}); }
 
-/* ======== CLICK EFFECT: HEARTS ======== */
-document.body.addEventListener("click", function(e) {
-    if(!e.target.classList.contains("button")) {
-        let heart = document.createElement("div");
-        heart.innerHTML = "💗";
-        heart.style.position = "absolute";
-        heart.style.left = e.clientX - 10 + "px";
-        heart.style.top = e.clientY - 10 + "px";
-        heart.style.fontSize = "24px";
-        heart.style.pointerEvents = "none";
-        heart.style.animation = "rise 1s ease-out forwards";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 1000);
-    }
-});
-
-let style = document.createElement('style');
-style.innerHTML = `
-@keyframes rise {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-80px); opacity: 0; }
-}`;
-document.head.appendChild(style);
+// AUDIO BUTTON
+function playAudio(){ 
+    if(bgMusic) bgMusic.volume=0.3; 
+    let audio=document.getElementById("myAudio");
+    audio.play();
+    audio.onended=()=>{ if(bgMusic) bgMusic.volume=1; };
+}
 </script>
-
 </body>
 </html>
