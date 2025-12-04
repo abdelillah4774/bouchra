@@ -287,6 +287,48 @@ document.querySelectorAll(".button").forEach(btn => {
     });
 });
 
+
+    /* ======= تحسين للجوال ======= */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .card {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .button {
+        padding: 10px 18px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    #loveText {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+
+    #loveVideo {
+        width: 95%;
+    }
+
+    .duck {
+        width: 45px;
+    }
+} 
+    
 /* ================= DUCK MOVEMENT + VOICE ================= */
 let mySound = new Audio("https://g.top4top.io/m_3625kqsts1.mp3");
 let duck = null;
